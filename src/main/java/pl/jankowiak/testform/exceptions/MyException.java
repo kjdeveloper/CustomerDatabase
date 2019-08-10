@@ -1,6 +1,6 @@
 package pl.jankowiak.testform.exceptions;
 
-public class MyException {
+public class MyException extends RuntimeException {
 
     private ExceptionInfo exceptionInfo;
 

@@ -1,6 +1,8 @@
 package pl.jankowiak.testform.validation;
 
 import pl.jankowiak.testform.dto.ClientDto;
+import pl.jankowiak.testform.exceptions.ExceptionCode;
+import pl.jankowiak.testform.exceptions.MyException;
 
 import java.time.LocalDate;
 import java.util.Map;
@@ -10,14 +12,27 @@ public class ClientValidator implements IValidator<ClientDto> {
     @Override
     public Map<String, String> validate(ClientDto clientDto) {
         if (clientDto == null){
-            errors.put("null", "Client is null");
+            throw new MyException(ExceptionCode.OBJECT_IS_NULL, "CLIENT IS NULL");
         }
 
-
-
-
-
-
+        if (!isNameValid(clientDto.getName())){
+            errors.put("Name", "client name is not valid " + clientDto.getName());
+        }
+        if (!isSurnameValid(clientDto.getSurname())){
+            errors.put("Surname", "client surname is not valid " + clientDto.getSurname());
+        }
+        if (!isDateBirthValid(clientDto.getDateOfBirth())){
+            errors.put("Date of birth", "client birth of date is not valid " + clientDto.getDateOfBirth());
+        }
+        if (!isEmailValid(clientDto.getEmail())){
+            errors.put("Email", "Client email is not valid " + clientDto.getEmail());
+        }
+        if (!isPhoneNumberValid(clientDto.getPhoneNumber())){
+            errors.put("Phone number", "Client phone number is not valid");
+        }
+        if (!isEstimatedRentalDateValid(clientDto.getEstimatedRentalDate())){
+            errors.put("Estimated rental date", "Client estimated rental date is not valid " + clientDto.getEstimatedRentalDate());
+        }
         return errors;
     }
 
@@ -49,6 +64,5 @@ public class ClientValidator implements IValidator<ClientDto> {
     private boolean isEstimatedRentalDateValid(LocalDate estimateRentalDate){
         return estimateRentalDate.isAfter(LocalDate.now().plusDays(1));
     }
-
 
 }
