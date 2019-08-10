@@ -1,44 +1,36 @@
-package pl.jankowiak.testform.model;
+package pl.jankowiak.testform.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.web.multipart.MultipartFile;
+import pl.jankowiak.testform.model.EstimatedRentalTime;
+import pl.jankowiak.testform.model.Gender;
+import pl.jankowiak.testform.model.Vehicle;
 
-import javax.persistence.*;
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-
-@Entity
-@Table(name = "clients")
-public class Client {
-
-    @Id
-    @GeneratedValue
+public class ClientDto {
     private Long id;
-
     private String name;
     private String surname;
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private LocalDate dateOfBirth;
     private String email;
     private String phoneNumber;
-
-    @Enumerated(EnumType.STRING)
     private Gender gender;
-
-    @Enumerated(EnumType.STRING)
     private Vehicle vehicle;
-
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private LocalDate estimatedRentalDate;
-
-    @Enumerated(EnumType.STRING)
     private EstimatedRentalTime estimatedRentalTime;
+
+    private MultipartFile drivingLicenseScan;
 
 
 }
