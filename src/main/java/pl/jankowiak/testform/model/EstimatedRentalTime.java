@@ -1,21 +1,21 @@
 package pl.jankowiak.testform.model;
 
 public enum EstimatedRentalTime {
-    ONE_DAY(1),
-    TWO_DAYS(2),
-    THREE_DAYS(3),
-    FIVE_DAYS(5),
-    SEVEN_DAYS(7),
-    TEN_DAYS(10),
+    ONE_DAY("1 day"),
+    TWO_DAYS("2 days"),
+    THREE_DAYS("2 days"),
+    FIVE_DAYS("5 days"),
+    SEVEN_DAYS("7 days"),
+    TEN_DAYS("10 days"),
     ;
 
-    private final int value;
+    private final String value;
 
-    EstimatedRentalTime(final int newValue) {
+    EstimatedRentalTime(final String newValue) {
         value = newValue;
     }
 
-    public int getValue() {
+    public String getValue() {
         return value;
     }
 }

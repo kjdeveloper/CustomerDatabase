@@ -14,7 +14,6 @@ public class ClientValidator implements IValidator<ClientDto> {
         if (clientDto == null){
             throw new MyException(ExceptionCode.CLIENT_IS_NULL, "CLIENT CAN NOT BE NULL");
         }
-
         if (!isNameValid(clientDto.getName())){
             errors.put("NAME", "client name is not valid " + clientDto.getName());
         }

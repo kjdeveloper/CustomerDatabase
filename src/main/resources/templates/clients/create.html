@@ -68,7 +68,7 @@
                 <div class="form-group">
                     <label>Estimated rental time</label>
                     <ul class="list-group">
-                        <li th:each="ert : ${estimateRentalTime}" class="list-group-item">
+                        <li th:each="ert : ${estimateRentalTimes}" class="list-group-item">
                             <input type="radio" th:field="*{estimatedRentalTime}" th:value="${ert}" class="mr-1"/>
                             <label th:text="${ert.getValue()}" class="mr-2"></label>
                         </li>

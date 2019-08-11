@@ -21,21 +21,19 @@ public class ClientController {
     private final ClientService clientService;
 
     @GetMapping("/create")
-    public String createGet(Model model){
+    public String createGet(Model model) {
         model.addAttribute("client", new ClientDto());
         model.addAttribute("genders", Gender.values());
         model.addAttribute("vehicles", Vehicle.values());
-        model.addAttribute("estimateRentalTime", EstimatedRentalTime.values());
+        model.addAttribute("estimateRentalTimes", EstimatedRentalTime.values());
         return "clients/create";
     }
 
     @PostMapping("/create")
-    public String createPost(@ModelAttribute ClientDto clientDto){
+    public String createPost(@ModelAttribute ClientDto clientDto) {
         System.out.println(clientDto);
         return "redirect:/";
     }
-
-
 
 
 }
