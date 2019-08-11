@@ -12,26 +12,26 @@ public class ClientValidator implements IValidator<ClientDto> {
     @Override
     public Map<String, String> validate(ClientDto clientDto) {
         if (clientDto == null){
-            throw new MyException(ExceptionCode.OBJECT_IS_NULL, "CLIENT IS NULL");
+            throw new MyException(ExceptionCode.CLIENT_IS_NULL, "CLIENT CAN NOT BE NULL");
         }
 
         if (!isNameValid(clientDto.getName())){
-            errors.put("Name", "client name is not valid " + clientDto.getName());
+            errors.put("NAME", "client name is not valid " + clientDto.getName());
         }
         if (!isSurnameValid(clientDto.getSurname())){
-            errors.put("Surname", "client surname is not valid " + clientDto.getSurname());
+            errors.put("SURNAME", "client surname is not valid " + clientDto.getSurname());
         }
         if (!isDateBirthValid(clientDto.getDateOfBirth())){
-            errors.put("Date of birth", "client birth of date is not valid " + clientDto.getDateOfBirth());
+            errors.put("DATE OF BIRTH", "client birth of date is not valid " + clientDto.getDateOfBirth());
         }
         if (!isEmailValid(clientDto.getEmail())){
-            errors.put("Email", "Client email is not valid " + clientDto.getEmail());
+            errors.put("EMAIL", "Client email is not valid " + clientDto.getEmail());
         }
         if (!isPhoneNumberValid(clientDto.getPhoneNumber())){
-            errors.put("Phone number", "Client phone number is not valid");
+            errors.put("PHONE NUMBER", "Client phone number is not valid");
         }
         if (!isEstimatedRentalDateValid(clientDto.getEstimatedRentalDate())){
-            errors.put("Estimated rental date", "Client estimated rental date is not valid " + clientDto.getEstimatedRentalDate());
+            errors.put("ESTIMATED RENTAL DATE", "Client estimated rental date is not valid " + clientDto.getEstimatedRentalDate());
         }
         return errors;
     }
